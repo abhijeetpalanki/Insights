@@ -14,6 +14,51 @@
   min-height: 7rem;
   background-color: #111214;
   border-radius: 1rem 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+}
+
+.logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 5rem;
+  color: #ddd;
+  letter-spacing: 0.2rem;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar input {
+  width: 25rem;
+  height: 4rem;
+  background-color: #060709;
+  border: none;
+  border-radius: 5rem;
+  padding: 0 4rem 0 2rem;
+  color: #ddd;
+  transition: width 0.3s;
+}
+
+.search-bar input:focus {
+  width: 35rem;
+}
+
+.search-bar input:focus::placeholder {
+  color: transparent;
+}
+
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: #bbb;
+  font-size: 1.8rem;
 }
 
 .news-content {
@@ -36,6 +81,25 @@
   height: 20%;
   background-color: #111214;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+  cursor: pointer;
+}
+
+.user img {
+  width: 7rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user p {
+  font-family: "Comfortaa", sans-serif;
+  font-size: 1.5rem;
+  color: #ddd;
 }
 
 .categories {
@@ -43,6 +107,39 @@
   height: calc(80% - 2rem);
   background-color: #111214;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 2rem;
+}
+
+.nav-heading {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.5rem, 2.5cqi, 3rem);
+  color: #ddd;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #ddd;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link i {
+  font-size: 1.7rem;
+  margin-left: 1rem;
 }
 
 .news-section {
