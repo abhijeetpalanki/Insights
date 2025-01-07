@@ -1,5 +1,5 @@
 import React from "react";
-import demoImg from "../assets/images/demo.jpg";
+import "../styles/Modal.css";
 import "../styles/NewsModal.css";
 
 const NewsModal = ({ show, article, onClose }) => {
