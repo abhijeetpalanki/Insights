@@ -207,7 +207,12 @@ const News = () => {
           <Calendar />
         </div>
       </div>
-      <footer className="news-footer">Footer</footer>
+      <footer className="news-footer">
+        <p>
+          <span>Insights</span>
+        </p>
+        <p>&copy; All Rights Reserved. By Abhijeet Palanki</p>
+      </footer>
     </div>
   );
 };
