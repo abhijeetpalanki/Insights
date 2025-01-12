@@ -9,6 +9,7 @@ import userImg from "../assets/images/user.jpg";
 import noImg from "../assets/images/no-img.png";
 import NewsModal from "./NewsModal";
 import Bookmarks from "./Bookmarks";
+import BlogsModal from "./BlogsModal";
 
 const categories = [
   "general",
@@ -22,7 +23,7 @@ const categories = [
   "nation",
 ];
 
-const News = ({ onShowBlogs, blogs }) => {
+const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("general");
@@ -32,6 +33,8 @@ const News = ({ onShowBlogs, blogs }) => {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [bookmarks, setBookmarks] = useState([]);
   const [showBookmarksModal, setShowBookmarksModal] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [showBlogModal, setShowBlogModal] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -87,6 +90,16 @@ const News = ({ onShowBlogs, blogs }) => {
       localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
       return updatedBookmarks;
     });
+  };
+
+  const handleBlogClick = (blog) => {
+    setSelectedPost(blog);
+    setShowBlogModal(true);
+  };
+
+  const closeBlogModal = () => {
+    setShowBlogModal(false);
+    setSelectedPost(null);
   };
 
   return (
@@ -205,21 +218,40 @@ const News = ({ onShowBlogs, blogs }) => {
           <h1 className="my-blogs-heading">My Blogs</h1>
           <div className="blog-posts">
             {blogs.map((blog, index) => (
-              <div key={index} className="blog-post">
+              <div
+                key={index}
+                className="blog-post"
+                onClick={() => handleBlogClick(blog)}
+              >
                 <img src={blog.image || noImg} alt={blog.title} />
                 <h3>{blog.title}</h3>
-                {/* <p>{blog.content}</p> */}
                 <div className="post-buttons">
-                  <button className="edit-post">
+                  <button
+                    className="edit-post"
+                    onClick={() => onEditBlog(blog)}
+                  >
                     <i className="bx bxs-edit"></i>
                   </button>
-                  <button className="delete-post">
+                  <button
+                    className="delete-post"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDeleteBlog(blog);
+                    }}
+                  >
                     <i className="bx bxs-x-circle"></i>
                   </button>
                 </div>
               </div>
             ))}
           </div>
+          {selectedPost && showBlogModal && (
+            <BlogsModal
+              show={showBlogModal}
+              blog={selectedPost}
+              onClose={closeBlogModal}
+            />
+          )}
         </div>
         <div className="weather-calendar">
           <Weather />
