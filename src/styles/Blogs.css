@@ -38,11 +38,23 @@
   position: relative;
 }
 
-.blogs-right-form {
+.submission-message {
+  font-size: 6rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #b88efc, #6877f4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blogs-right-form.visible {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 5rem;
+}
+
+.blogs-right-form.hidden {
+  display: none;
 }
 
 .blogs-right-form h1 {
@@ -104,6 +116,11 @@
   color: transparent;
 }
 
+.title-input.invalid::placeholder,
+.text-input.invalid::placeholder {
+  color: #c41438;
+}
+
 .title-input {
   font-size: 1.8rem;
 }
@@ -111,6 +128,15 @@
 .text-input {
   aspect-ratio: 5 / 3;
   resize: none;
+}
+
+.text-input::-webkit-scrollbar {
+  display: none;
+}
+
+.title-input.invalid,
+.text-input.invalid {
+  border-bottom: 0.1rem solid #c41438;
 }
 
 .submit-btn {
